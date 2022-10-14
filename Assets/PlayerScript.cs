@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-
+    public static PlayerScript instance;
     public int puntajes;
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
-    }
+        DontDestroyOnLoad(gameObject);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
 }
